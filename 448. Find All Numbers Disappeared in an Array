@@ -1,0 +1,41 @@
+class Solution {
+
+    // making the fuction swap for swaping ...
+     void  swap (int[] arr , int start, int end){
+         int temp = arr[start];
+         arr[start] = arr[end];
+         arr[end]= temp;
+
+     }
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        // creating a list bcoz output list and array is variable length ..
+        List<Integer> ans = new ArrayList<>();
+
+        int i =  0;
+        while (i < nums.length){
+            // if numbers are staring form 0 then coreect is nums[i];
+            // if numbers are staring form 1 then coreect is nums[i] -1;
+            int correct = nums[i] -1;
+            // by using this cycle sorting we can also handle the dublicates .. elements ..
+            // it will skip the dublicates elements and just sort the array ..
+            if (nums[i] != nums[correct] ){
+                swap (nums, i,correct);
+
+            }
+            else{
+                i++;
+            }
+
+        }
+        // now in the sorted array every element is on then (element  - 1 )index  if it is not then that  it is your ans ....
+        for (int j=0; j<nums.length;j++){
+            if ( nums[j] != j+1){
+                ans.add(j+1);
+
+            }
+        }
+        // returning the ans of variable length .. 
+        return ans;
+        
+    }
+}
