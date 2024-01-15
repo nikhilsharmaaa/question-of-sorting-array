@@ -1,0 +1,42 @@
+class Solution {
+    // making fuction for swap 
+    void swap (int[] nums,int first, int  second ){
+        int temp = nums[first];
+        nums[first ]  = nums[second ];
+        nums[second ] = temp;
+    }
+    int[] bubbleSort(int[] nums){
+        for (int i=0; i<nums.length;i++){
+            boolean swaping = false;
+            for (int j=1;j<nums.length-i;j++){
+                if ( nums[j-1]> nums[j]){
+                    swap (nums, j-1,j);
+                    swaping = true ; 
+                }
+            }
+            if (swaping == false ){
+                break ;
+            }
+        }
+        return nums;
+    }
+    public int heightChecker(int[] heights) {
+        // creating the array of same lenght and same elements and then compere with original one .. array then return the incorrect indexs .. where elements are not match .. 
+        int[] nums = new int[heights.length];
+        for (int i =0;i<nums.length;i++){
+            nums[i] = heights[i];
+
+        }
+        // using bubble sorting  here ...  
+        bubbleSort(nums);
+        // you also use simple sorting ..
+        //Arrays.sort(nums);
+        int count =0;
+        for (int j=0; j<nums.length;j++){
+            if (nums[j] != heights[j] ){
+                count++;
+            }
+        }
+        return count;
+    }
+}
